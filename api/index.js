@@ -19,10 +19,19 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
-
+// const { getPokemons, getPokemonById, getPokemonBySearch, getTypes, addPokemon} = require('./src/Controllers/index.js')
 // Syncing all the models at once.
-conn.sync({ force: true }).then(() => {
+conn.sync({ force: false }).then(() => {
   server.listen(3001, () => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });
 });
+// server.get('/pokemons', getPokemonBySearch, getPokemons)
+
+// server.get('/pokemons/:id', getPokemonById)
+
+// //server.get('/pokemons', getPokemons)
+
+// server.get('/types', getTypes)
+
+// server.post('/pokemons', addPokemon)

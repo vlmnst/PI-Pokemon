@@ -1,0 +1,29 @@
+    
+.full{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background:  url('../img/21776.jpg') no-repeat 50% 50%;
+    background-size: cover;
+    justify-content: center;
+    align-items: center;
+} 
+
+.btn{
+    align-items: center;
+    font-family:  'Trebuchet MS', sans-serif ;
+    font-size: 1em;
+    background-color: black;
+    color: whitesmoke;
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    opacity: 0.8;
+    box-shadow: 0 2px 25px rgba(173, 72, 13, 0.582);
+}  
+
+
+  

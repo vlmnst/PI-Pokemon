@@ -8,5 +8,35 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-  });
+    id: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      primaryKey: true,
+      allowNull: false
+    },
+    hp: {
+      type: DataTypes.INTEGER
+    },
+    attack:{
+      type: DataTypes.INTEGER
+    },
+    defense: {
+      type: DataTypes.INTEGER
+    },
+    speed: {
+      type: DataTypes.INTEGER
+    },
+    height: {
+      type: DataTypes.INTEGER
+    },
+    weight: {
+      type: DataTypes.INTEGER
+    },
+    image: {
+      type: DataTypes.TEXT
+    }
+  }, {
+  paranoid: true,
+  deletedAt: 'destroyTime'
+});
 };
