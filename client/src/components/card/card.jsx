@@ -3,12 +3,16 @@ import { Link } from "react-router-dom";
 import styles from "./card.module.css";
 import { deletePokemon } from "../../redux/actions.js";
 import { useDispatch } from "react-redux";
+
+
 export default function Card({ pokeActuales }) {
   const dispatch = useDispatch();
 
   const handleClick = (id) => {
     dispatch(deletePokemon(id));
-  };
+    };
+  
+  
   return (
     <div className={styles.conteiner}>
       {pokeActuales ? (

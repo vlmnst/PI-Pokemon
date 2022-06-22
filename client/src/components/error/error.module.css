@@ -1,0 +1,35 @@
+.notfound{
+    display: flex;
+    height: auto;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.div {
+    display: flex;  
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    font-family: "Lucida Console", monospace;
+    padding: 50px;
+    color: #ffe3e3;
+}
+
+.btn {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 60%;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 18px;
+    padding: 15px;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(135deg,rgb(131, 131, 131)7, #ffe3e3 );
+    box-shadow: 0 2px 25px rgba(173, 72, 13, 0.582);
+}

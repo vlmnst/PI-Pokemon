@@ -10,6 +10,7 @@ const {
   CLEAN,
   GET_TYPES,
   DELETE,
+  BACK,
 } = require("./actionTypes.js");
 
 const initialState = {
@@ -62,12 +63,13 @@ const rootReducer = (state = initialState, { type, payload }) => {
       if (payload === "All") filtro = [...state.allPokemonsCopy];
       if (payload === "Api")
         filtro = filtro.filter((pokemon) => pokemon.id.toString().length < 9);
-      if (payload === "Created"){
+      if (payload === "Created") {
         filtro = filtro.filter((pokemon) => pokemon.id.length > 9);
         if (filtro.length < 1) {
-          filtro =  [...state.allPokemonsCopy]
-          alert('¡Aun no has creado pokemons!')}
-          console.log(filtro)
+          filtro = [...state.allPokemonsCopy];
+          alert("¡Aun no has creado pokemons!");
+        }
+        console.log(filtro);
       }
       return {
         ...state,
@@ -108,34 +110,40 @@ const rootReducer = (state = initialState, { type, payload }) => {
         allPokemons: resultado,
       };
     case GET_SEARCH:
-      console.log(payload)
-      let pokemon = payload.map((info) => {
+      console.log(payload);
+      let pokemon;
+      if (payload.error) {
+        pokemon = payload;
+      }
+      if (payload.length) {
+        pokemon = payload.map((info) => {
           return {
             id: info.id,
             name: info.name,
             types: info.types,
             image: info.image,
-            attack: info.attack
+            attack: info.attack,
           };
         });
-      
-      console.log(pokemon)
+      }
+
+      console.log(pokemon);
       return {
         ...state,
         allPokemons: pokemon,
       };
     case CREATE_POKEMON:
-      console.log(payload) 
+      console.log(payload);
       let nuevoPoke = payload.find((info) => {
         return {
           id: info.id,
           name: info.name,
-          types: info.types.map(tipo => tipo + ' '),
+          types: info.types.map((tipo) => tipo + " "),
           image: info.image,
-          attack: info.attack
+          attack: info.attack,
         };
       });
-      console.log(nuevoPoke) 
+      console.log(nuevoPoke);
       return {
         ...state,
         allPokemons: [...state.allPokemons, nuevoPoke],
@@ -146,16 +154,24 @@ const rootReducer = (state = initialState, { type, payload }) => {
         ...state,
         detailPokemon: payload,
       };
-      case DELETE:
-      let filtrado = state.allPokemons.filter(pokemon => pokemon.id !== payload)
-      let filtradoAll = state.allPokemonsCopy.filter(pokemon => pokemon.id !== payload)
-      console.log(filtrado)  
-       
+    case DELETE:
+      let filtrado = state.allPokemons.filter(
+        (pokemon) => pokemon.id !== payload
+      );
+      let filtradoAll = state.allPokemonsCopy.filter(
+        (pokemon) => pokemon.id !== payload
+      );
+      console.log(filtrado);
       return {
-          ...state,
-          allPokemons: filtrado,
-          allPokemonsCopy: filtradoAll
-        }
+        ...state,
+        allPokemons: filtrado,
+        allPokemonsCopy: filtradoAll,
+      };
+    case BACK:
+      return {
+        ...state,
+        allPokemons: [...state.allPokemonsCopy],
+      };
     default:
       return state;
   }

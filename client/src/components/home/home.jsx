@@ -15,7 +15,6 @@ export default function Home() {
   useEffect(() => {
     if (allPokemons.length < 1) dispatch(getAllPokemons());
   }, [dispatch, allPokemons]);
-
   useEffect(() => {
     if (types.length < 1) dispatch(getTypes());
   }, [dispatch, types.length]);
@@ -25,58 +24,48 @@ export default function Home() {
   const pokemonsPorPage = 12;
   let ini = page * pokemonsPorPage - pokemonsPorPage; //0
   let fin = page * pokemonsPorPage; //12
-  // console.log(allPokemons)
   let pokeActuales = allPokemons;
-  // console.log(pokeActuales)
   if (pokeActuales.length > 1) {
     pokeActuales = allPokemons.slice(ini, fin);
   }
-
   let paginado = (numero) => {
     setPage(numero);
   };
-  //--
+  //------
+  
 
+  
+ //--------
   return (
     <div className={styles.conteiner1}>
-      
-        {!pokeActuales.length ? (
-          pokeActuales.error ? (
-            <div>
-              <Error />
-            </div>
-          ) : (
-            <div className={styles.loader}>
-              <img src={charmarder} alt="loading" className={styles.img} />
-            </div>
-          )
-        ) : (
+      <div>
+        <NavBar paginado={paginado} />
+      </div>
+      {!pokeActuales.length ? (
+        pokeActuales.error ? (
           <div>
-            <div >
-              <NavBar paginado={paginado} />
-            </div>
-
-            <div>
-              <Card pokeActuales={pokeActuales} />
-            </div>
-
-            <div className={styles.conteiner5}>
-              <Paginado
-                pokemonsPorPage={pokemonsPorPage}
-                paginado={paginado}
-                allPokemons={allPokemons.length}
-              />
-            </div>
+            <Error />
           </div>
-        )}
-      
+        ) : (
+          <div className={styles.loader}>
+            <img src={charmarder} alt="loading" className={styles.img} />
+          </div>
+        )
+      ) : (
+        <div>
+          <div>
+            <Card pokeActuales={pokeActuales} />
+          </div>
+
+          <div className={styles.conteiner5}>
+            <Paginado
+              pokemonsPorPage={pokemonsPorPage}
+              paginado={paginado}
+              allPokemons={allPokemons.length}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
-
-// return (
-//   <div className={styles.loader}>
-//      <img src={charmarder} alt="loading" className={styles.img} />
-//   </div>
-//  )
-// }

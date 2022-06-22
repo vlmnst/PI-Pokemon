@@ -127,6 +127,7 @@ export default function Create() {
       weight: "",
       types: [],
     });
+    alert("¡Felicidades! ¡Tienes un nuevo pokemon! Vuelve al Home para visualizarlo")
   };
 
   //----------Formulario
@@ -158,7 +159,7 @@ export default function Create() {
                 name={"image"}
                 value={input.image}
                 onChange={(e) => handleChange(e)}
-                placeholder="Ingresa la URL de tu imagen"
+                placeholder="La URL debe ser ftp, http, https "
               />
               {errors.image && <p className={styles.danger}>{errors.image}</p>}
             </div>

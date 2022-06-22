@@ -10,7 +10,8 @@ const {
   CREATE_POKEMON,
   CLEAN,
   GET_TYPES,
-  DELETE
+  DELETE,
+  BACK
 } = require("./actionTypes.js");
 
 export const getAllPokemons = () => {
@@ -119,4 +120,10 @@ export const deletePokemon = (id) => {
     axios.delete(`http://localhost:3001/pokemons/${id}`)
       return dispatch({ type: DELETE, payload: id })   
   };
+}
+
+export const back = () => {
+  return {
+    type: BACK
+  }
 }
