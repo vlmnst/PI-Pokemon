@@ -21,3 +21,15 @@ npm start
  https://poke-app-zeta.vercel.app/
 -Back
  https://dashboard.heroku.com/apps/poke-app-vlmnst
+
+### Tecnologias utilizadas
+```js
+let skills = {
+    "Programming Language": [ "JavaScript" ],
+    "Web Technology":       [ "HTML", "CSS", "Node.js" ],
+    "Database":             [ "PostgreSQL" ],
+    "ORMs - ODMs":          [ "Sequelize" ],
+    "Framework - Library":  [ "React.js", "Redux", "Express.js" ],
+    "Version Control":      [ "Git", "Github" ],
+}
+```
